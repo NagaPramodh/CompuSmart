@@ -100,6 +100,7 @@ export default function Products() {
                     position: "relative",
                     borderRadius: "20px",
                     padding: "10px",
+                    // backgroundColor: "#C5C6C7",
                   }}
                   key={productIndex}
                 >
@@ -109,7 +110,12 @@ export default function Products() {
                     sx={{ position: "absolute", top: 8, right: 8, zIndex: 1 }}
                   />
                   <CardMedia
-                    sx={{ height: 180 }}
+                    sx={{
+                      height: 180,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
                     image={product.img}
                     title={product.brand}
                   />
@@ -134,7 +140,7 @@ export default function Products() {
                       variant="body1"
                       sx={{ color: "text.secondary" }}
                     >
-                      Window version:{product.window_version}
+                      Windows version:{product.window_version}
                       <br />
                       Internal storage:{product.internal_storage}
                       <br />
@@ -285,7 +291,20 @@ export default function Products() {
                         }}
                       >
                         {isDifferent ? <DifferenceIcon /> : null}
-                        {key}: {product[key]}
+                        {key}:{" "}
+                        {isDifferent ? (
+                          <span
+                            style={{
+                              backgroundColor: "yellow",
+                              padding: "5px",
+                              borderRadius: "20px",
+                            }}
+                          >
+                            {product[key]}
+                          </span>
+                        ) : (
+                          product[key]
+                        )}
                       </Typography>
                     );
                   })}
